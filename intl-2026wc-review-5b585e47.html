@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 世界杯 · 简明指南</title>
+    <style>
+        /* 重置 & 基础 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #f9d7b0 0%, #f3b483 40%, #e89b6c 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+            color: #2d2016;
+        }
+
+        .magazine {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 251, 245, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 48px 48px 36px 36px;
+            box-shadow: 0 30px 50px rgba(140, 70, 20, 0.25), 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem 2.8rem;
+            transition: all 0.2s ease;
+        }
+
+        /* 横幅区 */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.8rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px dashed #e6c7af;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: 1px;
+            color: #4d2b1b;
+            background: linear-gradient(135deg, #7b4a30, #b56e42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #7e5b45;
+            background: #f5e3d4;
+            display: inline-block;
+            padding: 0.3rem 1.8rem;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        /* 背景卡片 */
+        .backdrop-card {
+            background: #fcf3ea;
+            border-radius: 28px;
+            padding: 1.6rem 2rem;
+            margin: 2rem 0 2.4rem;
+            border: 1px solid #f2d8c2;
+            box-shadow: inset 0 1px 4px rgba(255, 235, 220, 0.8);
+            position: relative;
+        }
+
+        .backdrop-card p {
+            font-size: 1.05rem;
+            color: #412d20;
+        }
+
+        .backdrop-card p:first-child::before {
+            content: "📌";
+            margin-right: 8px;
+            font-size: 1.3rem;
+        }
+
+        /* 三段自然介绍 */
+        .intro-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .intro-item {
+            background: #fffcf8;
+            border-radius: 28px;
+            padding: 1.6rem 2rem;
+            box-shadow: 0 3px 8px rgba(150, 80, 30, 0.08);
+            border-left: 6px solid #d69766;
+            transition: transform 0.15s ease;
+        }
+
+        .intro-item:hover {
+            transform: translateX(6px);
+        }
+
+        .intro-item h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #5b3823;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .intro-item p {
+            color: #3f2c1e;
+            font-size: 0.98rem;
+        }
+
+        /* 按钮感链接 */
+        .btn-like-link {
+            display: inline-block;
+            padding: 0.5rem 1.8rem;
+            background: #d69766;
+            color: #fffbf5;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.4px;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 8px rgba(180, 90, 30, 0.2);
+            margin: 0.2rem 0.1rem;
+        }
+
+        .btn-like-link:hover {
+            background: #b87347;
+            box-shadow: 0 6px 14px rgba(160, 75, 20, 0.3);
+        }
+
+        /* 嵌入式句子链接 (保持圆角但更低调) */
+        .inline-link {
+            color: #9b623d;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #dbaa7c;
+            padding: 0.1rem 0.2rem;
+            border-radius: 12px;
+            transition: background 0.15s;
+        }
+
+        .inline-link:hover {
+            background: #f1ddcb;
+            border-bottom-color: #b87347;
+        }
+
+        /* FAQ 摘要区 */
+        .faq-mini {
+            background: #fbf1e7;
+            border-radius: 28px;
+            padding: 1.5rem 2rem;
+            margin: 2.2rem 0 1.8rem;
+            border: 1px solid #ecd5c0;
+        }
+
+        .faq-mini h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #4f311f;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+            padding: 0.4rem 0.2rem;
+            border-bottom: 1px dashed #e6cdb8;
+        }
+
+        .faq-mini details:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 450;
+            color: #4d2b1b;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            color: #b87347;
+            font-size: 1.1rem;
+            transition: transform 0.15s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini .answer {
+            padding: 0.5rem 1.2rem 0.2rem;
+            color: #4c3829;
+            font-size: 0.95rem;
+        }
+
+        /* 页尾提示 */
+        .footer-note {
+            margin-top: 2.5rem;
+            padding: 1.5rem 1.2rem 0.8rem;
+            text-align: center;
+            border-top: 1px solid #ebd4c1;
+            font-size: 0.95rem;
+            color: #5b4132;
+        }
+
+        .footer-note p {
+            max-width: 500px;
+            margin: 0.4rem auto;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .magazine {
+                padding: 1.6rem 1.2rem;
+                border-radius: 32px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .intro-item {
+                padding: 1.2rem 1.4rem;
+            }
+
+            .backdrop-card {
+                padding: 1.2rem 1.4rem;
+            }
+
+            .faq-mini {
+                padding: 1.2rem 1.2rem;
+            }
+
+            .btn-like-link {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .hero .sub {
+                font-size: 0.9rem;
+                padding: 0.2rem 1rem;
+            }
+
+            .intro-item h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="magazine">
+
+    <!-- 首页横幅 -->
+    <div class="hero">
+        <h1>2026 · 征程之前</h1>
+        <div class="sub">简明指南 &amp; 访问提醒</div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="backdrop-card">
+        <p>四年一度的盛会即将跨越北美三国。对于许多球迷来说，除了赛程和对阵，更实际的问题是：如何获取官方信息、票务动态与举办城市细节。这个页面就是为此准备——不做长篇分析，只整理最实用的几条线索，让关注 <a href="https://intl-2026wc.com" class="inline-link">世界杯</a> 的朋友能快速找到方向。</p>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="intro-grid">
+
+        <div class="intro-item">
+            <h3>① 赛程与分组 · 概貌</h3>
+            <p>本届赛事由美国、加拿大、墨西哥联合承办，共 48 支队伍参赛。小组赛阶段将在 16 个城市展开，从温哥华到墨西哥城，跨度极大。如果你计划前往现场，建议提前了解各场馆的交通与住宿条件。官方渠道会陆续公布完整分组与淘汰赛路径，留意 <a href="https://intl-2026wc.com" class="inline-link">世界杯</a> 信息页的更新即可。</p>
+        </div>
+
+        <div class="intro-item">
+            <h3>② 票务与访问 · 提醒</h3>
+            <p>门票销售通常分阶段进行，第一轮抽签往往在赛事前一年启动。需要特别留意：跨境观赛可能涉及签证与行程规划，尤其是跨越美加或美墨边境。即使只是线上关注，也建议以可靠信息源为准。许多细节都可以在 <a href="https://intl-2026wc.com" class="inline-link">世界杯</a> 专题页面上找到逐步指引。</p>
+        </div>
+
+        <div class="intro-item">
+            <h3>③ 城市与氛围 · 散记</h3>
+            <p>从西雅图的现代球场到墨西哥城的阿兹特克体育场，每一座城市都有自己看球的方式。如果你偏好热闹的球迷区，洛杉矶、多伦多、蒙特雷都是不错的选择。也可以先在线上感受各地文化——<a href="https://intl-2026wc.com" class="inline-link">世界杯</a> 相关内容里常会提到主办城市的特色与提醒，值得随手一读。</p>
+        </div>
+
+    </div>
+
+    <!-- FAQ 摘要（简洁） -->
+    <div class="faq-mini">
+        <h4>❓ 几个常被问到的点</h4>
+
+        <details>
+            <summary>什么时候可以买票？</summary>
+            <div class="answer">一般提前一年开启注册窗口，具体日期须以官方公告为准。建议关注 <a href="https://intl-2026wc.com" class="inline-link">世界杯</a> 票务动态，避免错过登记期。</div>
+        </details>
+
+        <details>
+            <summary>需要办签证吗？</summary>
+            <div class="answer">如果跨越国家观赛，通常需要对应国家的有效签证。美国、加拿大、墨西哥的入境政策各不相同，建议提早查询使领馆信息。同时留意主办方是否推出球迷签便利措施。</div>
+        </details>
+
+        <details>
+            <summary>如何确认官方渠道？</summary>
+            <div class="answer">最稳妥的方式是直接访问国际足联及三家主办国足协的官网。<a href="https://intl-2026wc.com" class="inline-link">世界杯</a> 汇总页也整理了主要链接，可以作为起点参考。</div>
+        </details>
+
+    </div>
+
+    <!-- 页尾访问提示 （用按钮感链接，但不用“点击进入”类词，句子自然） -->
+    <div class="footer-note">
+        <p>如果你需要查阅更完整的赛事日历、场馆地图或官方声明，</p>
+        <p style="margin-top: 0.6rem;">
+            <a href="https://intl-2026wc.com" class="btn-like-link">世界杯</a>
+        </p>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.7;">—— 信息会持续更新，但请以官方最终发布为准 ——</p>
+    </div>
+
+</div>
+</body>
+</html>
