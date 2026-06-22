@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 资料索引与信息整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #2d3a4a;
+            line-height: 1.6;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffffd9;
+            backdrop-filter: blur(3px);
+            border-radius: 28px;
+            padding: 0.8rem 1.8rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border: 1px solid rgba(200,210,220,0.4);
+            margin-bottom: 2.8rem;
+        }
+        .logo-area {
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: 0.3px;
+            color: #1e2b3a;
+        }
+        .logo-area span {
+            background: #dce4ec;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-left: 6px;
+            color: #2f4051;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.4rem 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.95rem;
+            color: #3e5062;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #7b8b9e;
+            color: #141c26;
+        }
+
+        /* hero 区域 */
+        .hero {
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02), 0 0 0 1px rgba(210,220,230,0.4);
+            margin-bottom: 2.6rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 1.2rem;
+            color: #1a2837;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 780px;
+            color: #425566;
+        }
+        .hero .highlight-link {
+            display: inline-block;
+            margin-top: 1.4rem;
+            background: #eaeef2;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            border: 1px solid #d0dae3;
+            transition: background 0.2s;
+        }
+        .hero .highlight-link a {
+            color: #1f3a4e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .hero .highlight-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* 场景卡片三模块 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.6rem;
+            margin-bottom: 2.8rem;
+        }
+        .scene-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02), 0 0 0 1px #e7edf2;
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+        .scene-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04), 0 0 0 1px #ccd7e2;
+            transform: translateY(-2px);
+        }
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.7rem;
+            color: #1e2f3f;
+            border-left: 3px solid #bccad8;
+            padding-left: 12px;
+        }
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #3d5366;
+        }
+        .scene-card .tag {
+            display: inline-block;
+            background: #eef3f7;
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            margin-top: 0.9rem;
+            color: #34506a;
+            border: 1px solid #dbe3eb;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02), 0 0 0 1px #e2e9ef;
+            margin-bottom: 2.8rem;
+        }
+        .faq-summary h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #1a2a39;
+            letter-spacing: 0.2px;
+        }
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e5edf3;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #203545;
+        }
+        .faq-item .a {
+            font-size: 0.93rem;
+            color: #465f73;
+            line-height: 1.5;
+        }
+        .faq-item .a a {
+            color: #1d4d6e;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b8cadb;
+        }
+        .faq-item .a a:hover {
+            color: #0a2a40;
+            text-decoration-color: #6f8aa3;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 1.2rem;
+            text-align: center;
+            color: #6a7f91;
+            font-size: 0.9rem;
+            border-top: 1px solid #dfe7ee;
+            padding-top: 1.8rem;
+        }
+        .footer-note a {
+            color: #2b4a63;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 660px) {
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding: 1rem 1.4rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero {
+                padding: 2rem 1.6rem;
+            }
+            .faq-summary {
+                padding: 1.6rem 1.4rem;
+            }
+        }
+        @media (max-width: 420px) {
+            body {
+                padding: 1rem 0.6rem 2rem;
+            }
+            .scene-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 导航 -->
+    <nav class="top-nav">
+        <div class="logo-area">
+            ⚽ 索引库<span>资料整理</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">归档</a>
+            <a href="#">条目</a>
+            <a href="#">时间线</a>
+            <a href="#">笔记</a>
+        </div>
+    </nav>
+
+    <!-- hero 核心介绍 -->
+    <section class="hero">
+        <h1>世界杯 · 信息梳理与资料归档</h1>
+        <p>
+            从历届赛程、球队记录到文化影响，我们尝试用一种克制的整理方式，将分散的资讯归拢到同一份索引下。这里不追逐即时新闻，而是以资料卡和场景标签的形式，帮助读者更清晰地理解这项赛事的脉络。
+        </p>
+        <div class="highlight-link">
+            <span>⚡ 聚焦 </span><a href="https://website-na26wc.com">世界杯</a>
+            <span style="color:#5f7487;"> · 持续更新的内容集合</span>
+        </div>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section class="scene-grid">
+        <div class="scene-card">
+            <h3>📋 赛程与历史档案</h3>
+            <p>每届杯赛的完整对阵、举办场地与关键数据。从早期赛制到现代扩军，整理为可翻阅的序列卡片，方便查找特定年份或轮次。</p>
+            <span class="tag">1930 – 2026</span>
+        </div>
+        <div class="scene-card">
+            <h3>🏟️ 球队 · 战术笔记</h3>
+            <p>各国家队的大名单沿革、出场纪录与战术风格摘要。基于公开资料制作的非正式参考，不包含深度分析，更接近一份简洁的文献指引。</p>
+            <span class="tag">风格 · 阵容</span>
+        </div>
+        <div class="scene-card">
+            <h3>🌍 跨文化观察</h3>
+            <p>世界杯在主办国留下的城市印记、球迷文化片段以及媒体叙事的变化。收集自公开报道与纪实内容，以条目形式做粗线条整理。</p>
+            <span class="tag">文化 · 记忆</span>
+        </div>
+    </section>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <section class="faq-summary">
+        <h2>关于这份索引的常见说明</h2>
+        <div class="faq-item">
+            <span class="q">资料更新频率如何？</span>
+            <span class="a">我们按照赛季节奏做阶段性补充，不追求每日刷新。每个条目的页脚会标注最近一次校对时间，你可以据此判断时效性。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">信息源包括哪些？</span>
+            <span class="a">主要引用国际足联官方记录、主流体育媒体存档以及公开的赛事数据平台。所有二次整理均标注原始出处（如有）。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">我可以从这里跳转到更完整的专题吗？</span>
+            <span class="a">可以。每个场景卡片和部分说明中都嵌入了指向具体子页面的链接。如果你希望直接浏览与 <a href="https://website-na26wc.com">世界杯</a> 相关的综合归档页，可以通过导航或文内链接进入。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">是否包含预测或投注类内容？</span>
+            <span class="a">不包含。本索引只做事实性资料整理，不提供预测、赔率或任何形式的博彩引导，请合理使用。</span>
+        </div>
+    </section>
+
+    <!-- 脚注 -->
+    <footer class="footer-note">
+        <p>内容基于公开资料整理 · 非官方页面 · <a href="https://website-na26wc.com">世界杯</a> 专题持续建设中</p>
+    </footer>
+
+</div>
+</body>
+</html>
